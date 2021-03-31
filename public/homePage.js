@@ -1,15 +1,15 @@
 "use strict"; // код  обрабатывается в строгом режиме
-const logout = new new LogoutButton();
+const logout = new LogoutButton();
 
 logout.action = function () {
-    ApiConnector.logout((response) => {
+    ApiConnector.current((response) => {
         if(response.success) {
             location.reload();
         }
     })
 };
 
-ApiConnector.logout((response) => {
+ApiConnector.current((response) => {
     if(response.success) {
         ProfileWidget.showProfile(response.data);  
     }
@@ -64,7 +64,7 @@ moneyControl.sendMoneyCallback = function(data) {
     });
 };
 
-const favorit = new FavoritesWidget ():
+const favorit = new FavoritesWidget ();
 
 function updateFavorites(response) {
     favorit.clearTable();
